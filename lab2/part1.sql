@@ -7,7 +7,7 @@ SELECT *
     WHERE name = '110m Hurdles Men' AND olympic_id = 'SYD2000');
 
 # Problem 2
-SELECT *
+SELECT COUNT(*)
   FROM players
   WHERE SUBSTR(name, 0, 2) IN ('A', 'E', 'I', 'O', 'U');
 
