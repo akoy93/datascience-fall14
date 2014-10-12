@@ -1,26 +1,365 @@
 SQL Assignment Submission
 
 === 1
-<INSERT YOUR QUERY HERE>
+CREATE VIEW NumberOfMedals AS
+SELECT name AS country_name, num_medals AS number_of_medals
+  FROM countries
+  INNER JOIN
+  (SELECT country_id, COUNT(*) AS num_medals
+    FROM ( SELECT DISTINCT country_id, event_id, medal
+        FROM results r
+        INNER JOIN players p
+        ON r.player_id = p.player_id) AS country_medals
+    GROUP BY country_id) AS country_counts
+  ON countries.country_id = country_counts.country_id
+  ORDER BY name;
+
+SELECT * FROM NumberOfMedals;
 **************** RESULT ***************************************************************
-<INSERT YOUR RESULT HERE>
+               country_name               | number_of_medals 
+------------------------------------------+------------------
+ Algeria                                  |                4
+ Argentina                                |                1
+ Australia                                |               39
+ Austria                                  |                3
+ Barbados                                 |                1
+ Belarus                                  |                8
+ Brazil                                   |                3
+ Bulgaria                                 |                1
+ Cameroon                                 |                1
+ Canada                                   |                1
+ China                                    |                5
+ Costa Rica                               |                2
+ Croatia                                  |                1
+ Cuba                                     |               11
+ Czech Republic                           |                4
+ Denmark                                  |                3
+ Dominican Republic                       |                1
+ Eritrea                                  |                1
+ Estonia                                  |                2
+ Ethiopia                                 |               15
+ Finland                                  |                1
+ France                                   |                9
+ Germany                                  |               15
+ Greece                                   |                9
+ Hungary                                  |                4
+ Iceland                                  |                1
+ Ireland                                  |                1
+ Italy                                    |               13
+ Jamaica                                  |               14
+ Japan                                    |               15
+ Kazakhstan                               |                2
+ Kenya                                    |               14
+ Latvia                                   |                2
+ Lithuania                                |                3
+ Mexico                                   |                3
+ Morocco                                  |                7
+ Mozambique                               |                1
+ Netherlands                              |               15
+ Nigeria                                  |                6
+ Norway                                   |                3
+ Poland                                   |                9
+ Portugal                                 |                3
+ Romania                                  |               13
+ Russia                                   |               36
+ Saudi Arabia                             |                1
+ Slovakia                                 |                2
+ Slovenia                                 |                1
+ South Africa                             |               10
+ Spain                                    |                4
+ Sri Lanka                                |                1
+ Sweden                                   |                8
+ The Bahamas                              |                4
+ Trinidad and Tobago                      |                3
+ Turkey                                   |                1
+ Ukraine                                  |               13
+ United Kingdom                           |               12
+ United States                            |              101
+ Zimbabwe                                 |                3
+(58 rows)
 =============================================================================================
 
 === 2
-<INSERT YOUR QUERY HERE>
+SELECT a, b, R.c, d
+  FROM R
+  INNER JOIN S
+  ON (R.C = S.C) OR (R.C IS NULL AND S.C IS NULL);
+
+SELECT a, b, R.c, d
+  FROM R
+  FULL OUTER JOIN S
+  ON R.C = S.C
+  WHERE R.c IS NULL;
 **************** RESULT ***************************************************************
-<INSERT YOUR RESULT HERE>
+     a      | b  | c  |     d      
+------------+----+----+------------
+ a3         | 30 | 30 | d1        
+ a4         |  0 |    | d2        
+(2 rows)
+
+     a      | b | c |     d      
+------------+---+---+------------
+ a4         | 0 |   | 
+            |   |   | d2        
+(2 rows)
 =============================================================================================
 
 === 3
-<INSERT YOUR QUERY HERE>
+CREATE OR REPLACE FUNCTION update_team_medals()
+  RETURNS trigger AS
+$$
+DECLARE
+  country_id text;
+BEGIN
+  IF NEW.event_id IN (SELECT event_id FROM events WHERE is_team_event = 1) THEN
+    country_id = (SELECT p.country_id FROM players p WHERE NEW.player_id = player_id);
+    INSERT INTO TeamMedals
+    VALUES(country_id, NEW.event_id, NEW.medal, NEW.result);
+  END IF;
+
+  RETURN NEW;
+END;
+$$
+LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE TRIGGER add_result
+  BEFORE INSERT 
+  ON results
+  FOR EACH ROW
+  EXECUTE PROCEDURE update_team_medals();
+
+SELECT * 
+  FROM TeamMedals
+  WHERE country_id = 'USA';
+
+DELETE FROM results
+  WHERE medal = 'GOLD' AND event_id = 'E81';
+
+INSERT INTO results 
+  VALUES('E81', 'JONESMAR03', 'GOLD', '193.11'),
+        ('E81', 'GREENMAU01', 'GOLD', '193.11'),
+        ('E81', 'KEFLEMEB01', 'GOLD', '193.11'),
+        ('E81', 'JOHNSMIC01', 'GOLD', '193.11');
+
+SELECT * 
+  FROM TeamMedals
+  WHERE country_id = 'USA';
+
 **************** RESULT ***************************************************************
-<INSERT YOUR RESULT HERE>
+CREATE TRIGGER
+
+ country_id | event_id |  medal  | result 
+------------+----------+---------+--------
+ USA        | E100     | GOLD    | 202.62
+ USA        | E81      | BRONZE  | 194.62
+ USA        | E82      | SILVER  | 193.86
+ USA        | E83      | SILVER  | 216.39
+ USA        | E84      | GOLD    | 216.61
+ USA        | E85      | GOLD    | 210.68
+ USA        | E86      | GOLD    | 213.73
+ USA        | E87      | SILVER  | 239.12
+ USA        | E88      | GOLD    |  238.3
+ USA        | E89      | SILVER  |  38.08
+ USA        | E90      | GOLD    |  37.61
+ USA        | E92      | BRONZE  |   42.2
+ USA        | E93      | GOLD    | 427.33
+ USA        | E94      | SILVER  | 432.64
+ USA        | E95      | GOLD    | 473.42
+ USA        | E96      | GOLD    |  477.8
+ USA        | E97      | GOLD    | 175.91
+ USA        | E98      | GOLD    | 176.35
+ USA        | E99      | GOLD    | 199.01
+(19 rows)
+
+DELETE 4
+
+INSERT 0 4
+
+ country_id | event_id |  medal  | result 
+------------+----------+---------+--------
+ USA        | E100     | GOLD    | 202.62
+ USA        | E81      | BRONZE  | 194.62
+ USA        | E82      | SILVER  | 193.86
+ USA        | E83      | SILVER  | 216.39
+ USA        | E84      | GOLD    | 216.61
+ USA        | E85      | GOLD    | 210.68
+ USA        | E86      | GOLD    | 213.73
+ USA        | E87      | SILVER  | 239.12
+ USA        | E88      | GOLD    |  238.3
+ USA        | E89      | SILVER  |  38.08
+ USA        | E90      | GOLD    |  37.61
+ USA        | E92      | BRONZE  |   42.2
+ USA        | E93      | GOLD    | 427.33
+ USA        | E94      | SILVER  | 432.64
+ USA        | E95      | GOLD    | 473.42
+ USA        | E96      | GOLD    |  477.8
+ USA        | E97      | GOLD    | 175.91
+ USA        | E98      | GOLD    | 176.35
+ USA        | E99      | GOLD    | 199.01
+ USA        | E81      | GOLD    | 193.11
+ USA        | E81      | GOLD    | 193.11
+ USA        | E81      | GOLD    | 193.11
+ USA        | E81      | GOLD    | 193.11
+(23 rows)
 =============================================================================================
 
 === 4
-<INSERT YOUR QUERY HERE>
+CREATE OR REPLACE FUNCTION list_gold_medals()
+  RETURNS text AS
+$$
+  DECLARE
+    prev_name text;
+    curr record;
+    result text;
+    closed integer;
+  BEGIN
+    result := '';
+    prev_name := '';
+    closed := 1;
+
+    FOR curr IN
+      (SELECT event_name, name AS player_name
+        FROM 
+          (SELECT e.event_id, name as event_name, medal, player_id
+           FROM (SELECT * FROM events WHERE olympic_id = 'ATH2004') e
+           INNER JOIN (SELECT * FROM results WHERE medal = 'GOLD') r
+           ON e.event_id = r.event_id) AS res
+        INNER JOIN players p
+        ON p.player_id = res.player_id
+        WHERE country_id = 'USA')
+    LOOP
+      IF prev_name <> TRIM(curr.event_name) AND closed = 0 THEN
+        result := result || '</medal>' || E'\n';
+        closed := 1;
+      END IF;
+
+      IF prev_name <> TRIM(curr.event_name) AND closed = 1 THEN
+        result := result || '<medal>' || E'\n';
+        result := result || '  <event>' || curr.event_name || '</event>' || E'\n';
+        closed := 0;
+      END IF;
+
+      result := result || '  <player>' || curr.player_name || '</player>' || E'\n';
+
+      prev_name := TRIM(curr.event_name);
+    END LOOP;
+
+    IF closed = 0 THEN
+      result := result || '</medal>' || E'\n';
+    END IF;
+
+    RETURN result;
+  END;
+$$
+LANGUAGE 'plpgsql' IMMUTABLE;
+
+SELECT list_gold_medals();
 **************** RESULT ***************************************************************
-<INSERT YOUR RESULT HERE>
+CREATE FUNCTION
+
+               list_gold_medals                
+-----------------------------------------------
+ <medal>                                      +
+   <event>100m Backstroke Men</event>         +
+   <player>Aaron Peirsol</player>             +
+ </medal>                                     +
+ <medal>                                      +
+   <event>100m Backstroke Women</event>       +
+   <player>Natalie Coughlin</player>          +
+ </medal>                                     +
+ <medal>                                      +
+   <event>100m Butterfly Men</event>          +
+   <player>Michael Phelps</player>            +
+ </medal>                                     +
+ <medal>                                      +
+   <event>100m Hurdles Women</event>          +
+   <player>Joanna Hayes</player>              +
+ </medal>                                     +
+ <medal>                                      +
+   <event>100m Men</event>                    +
+   <player>Justin Gatlin</player>             +
+ </medal>                                     +
+ <medal>                                      +
+   <event>200m Backstroke Men</event>         +
+   <player>Aaron Peirsol</player>             +
+ </medal>                                     +
+ <medal>                                      +
+   <event>200m Breaststroke Women</event>     +
+   <player>Amanda Beard</player>              +
+ </medal>                                     +
+ <medal>                                      +
+   <event>200m Butterfly Men</event>          +
+   <player>Michael Phelps</player>            +
+ </medal>                                     +
+ <medal>                                      +
+   <event>200m Individual Medley Men</event>  +
+   <player>Michael Phelps</player>            +
+ </medal>                                     +
+ <medal>                                      +
+   <event>200m Men</event>                    +
+   <player>Shawn Crawford</player>            +
+ </medal>                                     +
+ <medal>                                      +
+   <event>400m Individual Medley Men</event>  +
+   <player>Michael Phelps</player>            +
+ </medal>                                     +
+ <medal>                                      +
+   <event>400m Men</event>                    +
+   <player>Jeremy Wariner</player>            +
+ </medal>                                     +
+ <medal>                                      +
+   <event>4x100m Medley Relay Men</event>     +
+   <player>Neil Walker</player>               +
+   <player>Aaron Peirsol</player>             +
+   <player>Michael Phelps</player>            +
+   <player>Jason Lezak</player>               +
+   <player>Brendan Hansen</player>            +
+   <player>Lenny Krayzelburg</player>         +
+   <player>Ian Crocker</player>               +
+ </medal>                                     +
+ <medal>                                      +
+   <event>4x200m Freestyle Relay Men</event>  +
+   <player>Peter Vanderkaay</player>          +
+   <player>Michael Phelps</player>            +
+   <player>Ryan Lochte</player>               +
+   <player>Klete Keller</player>              +
+   <player>Scott Goldblatt</player>           +
+ </medal>                                     +
+ <medal>                                      +
+   <event>4x200m Freestyle Relay Women</event>+
+   <player>Dana Vollmer</player>              +
+   <player>Kaitlin Sandeno</player>           +
+   <player>Carly Piper</player>               +
+   <player>Lindsay Benko</player>             +
+   <player>Natalie Coughlin</player>          +
+ </medal>                                     +
+ <medal>                                      +
+   <event>4x400m Relay Men</event>            +
+   <player>Jeremy Wariner</player>            +
+   <player>Darold Williamson</player>         +
+   <player>Otis Harris Jr</player>            +
+   <player>Derrick Brew</player>              +
+ </medal>                                     +
+ <medal>                                      +
+   <event>4x400m Relay Women</event>          +
+   <player>Deedee Trotter</player>            +
+   <player>Sanya Richards</player>            +
+   <player>Monique Henderson</player>         +
+   <player>Monique Hennagan</player>          +
+ </medal>                                     +
+ <medal>                                      +
+   <event>50m Freestyle Men</event>           +
+   <player>Gary Hall Jr.</player>             +
+ </medal>                                     +
+ <medal>                                      +
+   <event>Long Jump Men</event>               +
+   <player>Dwight Phillips</player>           +
+ </medal>                                     +
+ <medal>                                      +
+   <event>Pole Vault Men</event>              +
+   <player>Timothy Mack</player>              +
+ </medal>                                     +
+ 
+(1 row)
 =============================================================================================
 
