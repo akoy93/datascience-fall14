@@ -61,6 +61,10 @@ INSERT INTO results
         ('E81', 'KEFLEMEB01', 'GOLD', '193.11'),
         ('E81', 'JOHNSMIC01', 'GOLD', '193.11');
 
+SELECT * 
+  FROM TeamMedals
+  WHERE country_id = 'USA';
+
 -- 4
 CREATE OR REPLACE FUNCTION list_gold_medals()
   RETURNS text AS
