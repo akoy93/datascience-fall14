@@ -1,0 +1,52 @@
+Whisper, Secret, and Snapchat leaks show that fake privacy is almost worse than no privacy at all
+
+October 28, 2014 10:58 AM 
+Ruth Reader
+
+What’s worse than no privacy? Fake, malfunctioning “privacy” apps.
+
+A slew of anonymous apps and ephemeral messaging services have popped up in the last few years — some in direct response to news of data collection by the National Security Agency. But while well-intentioned, few consumer-level apps are actually anonymous — and they may be endangering your information.
+
+Last week in an investigative story the Guardian revealed that anonymous social feed Whisper is actually collecting user locations based on geolocation and IP addresses.
+
+The report also says that Whisper is saving posts and their location information to a searchable database, despite its promise to be “the safest place on the Internet.” But the revelation about Whisper is just the latest in a string of incidents that remind users that many, if not all, of the consumer apps on the market that promise anonymity and security fail to deliver.
+
+Secret has shown it’s vulnerable to hacking, though the company does have a bug bounty program that has successfully kept Secret out of the news, as Wired reported. But the same can’t be said for Snapchat, which repeatedly finds its way into the news, most recently for a leak of 200,000 user photos that ended up on Internet forum 4chan. Though Snapchat’s servers weren’t hacked in this particular event, the ephemeral messaging service has been found to be less secure — and less ephemeral — than it advertises. The company settled charges with the Federal Trade Commission in May for overstated claims of user anonymity and security.
+
+The problem with commercial anonymous apps
+Even with the media teardowns, these companies don’t have a lot of incentive to make truly anonymous apps. For one thing, true anonymity is difficult to achieve. Organizations like the Tor Project and serious cryptographers have devoted years to developing effective anonymous web and mobile experiences. And while these deliver on anonymity, they’re not exactly user-friendly. Tor, for example, is difficult to install and makes for slow web browsing. But for certain people, like journalists in countries with tight censorship laws, the anonymity component of the app trumps user experience.
+
+It’s easy to see how a startup looking to gain commercial success would eschew some level of privacy in order to facilitate a more friendly user interface.
+
+“You have two options: One is to learn all the things that researchers have been doing, and the other option is to write your own app and say you’ve solved those problems,” says Matt Green, professor of cyber security at John Hopkins University.
+
+Building an “anonymous” app that doesn’t provide the anonymity it claims is illegal, which is why the FTC took Snapchat to court. It’s also the reason Senator Jay Rockefeller is launching an investigation into Whisper, as Politico reported last week.
+
+The difficulty with false advertising charges in these instances is that there is no single definition for what constitutes anonymity on the web.
+
+“There’s no tool out there that can guarantee 100 percent anonymity. Even Tor does not guarantee it,” says Runa Sandvik, a privacy and security researcher at Freedom of the Press Foundation, an organization devoted to preserving public interest journalism. Without a universal set of standards, app makers are free to create products that could potentially qualify as anonymous or secure, with users largely left in the dark as to what that really means.
+
+The consumer dilemma
+A company’s terms of service (TOS) is supposed to clear up confusion for users about how location or other personal information may be used or stored within a company’s databases. Though many people fail to read the TOS before engaging with a site or app, once they agree to the terms, it is a binding contract. In the case of Whisper, you’re agreeing to being tracked.
+
+“If you read their TOS, you realize nothing you say on there is private or secret, because they’re admitting they collect certain forms of information and they will respond to law enforcement requests,” says Hanni Fakhoury, lawyer at the Electronic Freedom Foundation.
+
+But plenty of consumers don’t read the TOS. They’re long and full of legalese, and it’s much easier just to hit the “I accept” button. Some consumers also think the TOS doesn’t apply to them. The logic: If I’m not publishing or sending incriminating information through these apps and services, then I don’t have to worry about being tracked. But that may not be the case.
+
+“It is impossible to say what type of information you might have today that might be considered sensitive, or the U.S. government might want to know tomorrow,” says Sandvik. It’s easy to see, for example, how a location tied to a person or device and a time stamp could be valuable in any criminal investigation.
+
+But even if consumers do research and read the TOS, there is a certain level of blind faith required to believe that apps like Secret and Whisper are secure and abiding by the practices they set forth in their terms.
+
+That’s because Secret, Whisper, Wickr, Telegram, and Snapchat are all closed systems. One of the reasons Tor can claim better anonymity and security than other apps is that it’s open source, making its inner workings transparent to users. With proprietary software, even well-constructed apps like Wickr, which has gone to great lengths to create a heavyweight anonymity tool, you can’t verify that it’s not keeping your information on servers or tracking you — you just have to trust the company and its databases.
+
+What’s more, these highly sticky apps may be overshadowing verifiable anonymous or secure apps. A new class of free, open-source apps are emerging, but they lack a marketing budget or investment from big VCs.
+
+One of the apps most touted by the security community is called TextSecure, an Android app developed by Open WhisperSystems — an open-source offshoot of a 2011 Twitter acquisition. Though not anonymous, the free app features end-to-end encrypted texting and is open source; people can email the organization if they have questions about the level of security the app provides. The team of contributors at Open WhisperSystems also maintain two encrypted voice-calling apps called Signal and RedPhone, for iOS and Android respectively.
+
+These apps don’t get a lot of play, perhaps because Open WhisperSystems lacks the aforementioned marketing budget. But these open apps don’t necessarily depend on consumer adoption to gain relevance. More importantly, they can act as a model for other messaging platforms, like Snapchat.
+
+End-to-end encryption may not be as easy to achieve as secure web communications, which have been streamlined through the development of industry standards like SSL and TLS. But, through Open WhisperSystems, companies at least have a road map to building more secure apps.
+
+And that doesn’t have to be restricted to Snapchat and Whisper. Twitter and Facebook could also incorporate encrypted messaging in their apps — if someone else does the hard work, adding encryption would be a no-brainer.
+
+We can only hope.

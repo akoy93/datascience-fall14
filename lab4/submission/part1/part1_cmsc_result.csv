@@ -1,0 +1,117 @@
+Section_No.,Course_No.,Instructor,Waitlist,Open,Seats,Days,Time,Room_No.,Bldg.
+0101,CMSC100,Charles Kassir,0,4,45,M,4:00pm - 4:50pm,2117,CSI
+0101,CMSC106,Jianwu Wang,5,0,45,TuTh,9:30am - 10:45am,2117,CSI
+0101,CMSC131,Evan Golub ,0,0,31,MWF,2:00pm - 2:50pm,1115,CSI
+0102,CMSC131,Evan Golub ,0,0,31,MWF,2:00pm - 2:50pm,1115,CSI
+0103,CMSC131,Evan Golub ,0,1,31,MWF,2:00pm - 2:50pm,1115,CSI
+0104,CMSC131,Evan Golub ,0,1,31,MWF,2:00pm - 2:50pm,1115,CSI
+0201,CMSC131,Evan Golub ,0,1,31,MWF,3:00pm - 3:50pm,1115,CSI
+0202,CMSC131,Evan Golub ,0,1,31,MWF,3:00pm - 3:50pm,1115,CSI
+0203,CMSC131,Evan Golub ,0,0,31,MWF,3:00pm - 3:50pm,1115,CSI
+0204,CMSC131,Evan Golub ,1,0,31,MWF,3:00pm - 3:50pm,1115,CSI
+0301,CMSC131,Thomas Reinhardt,0,0,31,MWF,11:00am - 11:50am,1115,CSI
+0302,CMSC131,Thomas Reinhardt,0,0,31,MWF,11:00am - 11:50am,1115,CSI
+0303,CMSC131,Thomas Reinhardt,0,0,31,MWF,11:00am - 11:50am,1115,CSI
+0304,CMSC131,Thomas Reinhardt,0,0,31,MWF,11:00am - 11:50am,1115,CSI
+0401,CMSC131,Thomas Reinhardt,0,0,31,MWF,12:00pm - 12:50pm,1115,CSI
+0402,CMSC131,Thomas Reinhardt,0,7,31,MWF,12:00pm - 12:50pm,1115,CSI
+0403,CMSC131,Thomas Reinhardt,0,0,31,MWF,12:00pm - 12:50pm,1115,CSI
+0404,CMSC131,Thomas Reinhardt,0,7,31,MWF,12:00pm - 12:50pm,1115,CSI
+0101,CMSC132,Laurence Herman ,2,0,34,MWF,10:00am - 10:50am,1115,CSI
+0102,CMSC132,Laurence Herman ,0,0,34,MWF,10:00am - 10:50am,1115,CSI
+0103,CMSC132,Laurence Herman ,0,0,34,MWF,10:00am - 10:50am,1115,CSI
+0104,CMSC132,Laurence Herman ,2,0,34,MWF,10:00am - 10:50am,1115,CSI
+0201,CMSC132,Laurence Herman ,0,6,34,MWF,1:00pm - 1:50pm,1115,CSI
+0202,CMSC132,Laurence Herman ,0,1,34,MWF,1:00pm - 1:50pm,1115,CSI
+0203,CMSC132,Laurence Herman ,0,0,34,MWF,1:00pm - 1:50pm,1115,CSI
+0204,CMSC132,Laurence Herman ,0,0,34,MWF,1:00pm - 1:50pm,1115,CSI
+0301,CMSC132,Laurence Herman ,0,3,30,MWF,2:00pm - 2:50pm,2117,CSI
+0302,CMSC132,Laurence Herman ,1,0,29,MWF,2:00pm - 2:50pm,2117,CSI
+0303,CMSC132,Laurence Herman ,0,8,29,MWF,2:00pm - 2:50pm,2117,CSI
+0101,CMSC216,Nelson Padua-Perez ,0,2,28,TuTh,9:30am - 10:45am,1115,CSI
+0102,CMSC216,Nelson Padua-Perez ,0,0,28,TuTh,9:30am - 10:45am,1115,CSI
+0103,CMSC216,Nelson Padua-Perez ,1,0,28,TuTh,9:30am - 10:45am,1115,CSI
+0104,CMSC216,Nelson Padua-Perez ,0,0,28,TuTh,9:30am - 10:45am,1115,CSI
+0201,CMSC216,Nelson Padua-Perez ,0,0,28,TuTh,11:00am - 12:15pm,1115,CSI
+0202,CMSC216,Nelson Padua-Perez ,1,0,28,TuTh,11:00am - 12:15pm,1115,CSI
+0203,CMSC216,Nelson Padua-Perez ,1,0,28,TuTh,11:00am - 12:15pm,1115,CSI
+0204,CMSC216,Nelson Padua-Perez ,0,0,28,TuTh,11:00am - 12:15pm,1115,CSI
+0301,CMSC216,Nelson Padua-Perez ,0,0,28,TuTh,2:00pm - 3:15pm,1115,CSI
+0302,CMSC216,Nelson Padua-Perez ,0,2,28,TuTh,2:00pm - 3:15pm,1115,CSI
+0303,CMSC216,Nelson Padua-Perez ,0,0,28,TuTh,2:00pm - 3:15pm,1115,CSI
+0304,CMSC216,Nelson Padua-Perez ,0,0,28,TuTh,2:00pm - 3:15pm,1115,CSI
+0101,CMSC250,Clyde Kruskal ,4,0,29,TuTh,2:00pm - 3:15pm,2117,CSI
+0102,CMSC250,Clyde Kruskal ,5,0,29,TuTh,2:00pm - 3:15pm,2117,CSI
+0103,CMSC250,Clyde Kruskal ,3,0,29,TuTh,2:00pm - 3:15pm,2117,CSI
+0201,CMSC250,Clyde Kruskal ,5,0,29,TuTh,3:30pm - 4:45pm,1115,CSI
+0202,CMSC250,Clyde Kruskal ,3,0,29,TuTh,3:30pm - 4:45pm,1115,CSI
+0203,CMSC250,Clyde Kruskal ,3,0,29,TuTh,3:30pm - 4:45pm,1115,CSI
+0204,CMSC250,Clyde Kruskal ,0,14,29,TuTh,3:30pm - 4:45pm,1115,CSI
+0301,CMSC250,Thomas Reinhardt,1,0,29,TuTh,11:00am - 12:15pm,3117,CSI
+0302,CMSC250,Thomas Reinhardt,0,1,29,TuTh,11:00am - 12:15pm,3117,CSI
+0303,CMSC250,Thomas Reinhardt,5,0,29,TuTh,11:00am - 12:15pm,3117,CSI
+0101,CMSC250,Thomas Goldstein,0,0,25,TuTh,12:30pm - 1:45pm,3118,CSI
+0101,CMSC289,James Reggia ,36,0,60,TuTh,11:00am - 12:15pm,2117,CSI
+0101,CMSC330,Chau-Wen Tseng ,0,0,27,TuTh,3:30pm - 4:45pm,3117,CSI
+0102,CMSC330,Chau-Wen Tseng ,0,0,27,TuTh,3:30pm - 4:45pm,3117,CSI
+0103,CMSC330,Chau-Wen Tseng ,0,1,27,TuTh,3:30pm - 4:45pm,3117,CSI
+0201,CMSC330,Chau-Wen Tseng ,0,0,27,TuTh,12:30pm - 1:45pm,3117,CSI
+0202,CMSC330,Chau-Wen Tseng ,1,0,27,TuTh,12:30pm - 1:45pm,3117,CSI
+0203,CMSC330,Chau-Wen Tseng ,0,13,27,TuTh,12:30pm - 1:45pm,3117,CSI
+0301,CMSC330,Chau-Wen Tseng ,0,0,27,TuTh,2:00pm - 3:15pm,3117,CSI
+0302,CMSC330,Chau-Wen Tseng ,0,0,27,TuTh,2:00pm - 3:15pm,3117,CSI
+0303,CMSC330,Chau-Wen Tseng ,0,1,27,TuTh,2:00pm - 3:15pm,3117,CSI
+0101,CMSC351,Hamid Mahini,2,0,88,MWF,10:00am - 10:50am,3117,CSI
+0201,CMSC351,Hamid Mahini,4,0,88,MWF,11:00am - 11:50am,3117,CSI
+0301,CMSC351,Hamid Mahini,0,0,88,MWF,3:00pm - 3:50pm,2117,CSI
+0101,CMSC396,Atif Memon , Neil Spring,0,0,25,W,1:00pm - 1:50pm,4172,AVW
+0101,CMSC411,Michelle Hugue ,3,0,45,TuTh,3:30pm - 4:45pm,1122,CSI
+0201,CMSC411,Michelle Hugue ,3,0,45,TuTh,2:00pm - 3:15pm,1122,CSI
+0101,CMSC412,Neil Spring,4,0,25,TuTh,11:00am - 12:15pm,1122,CSI
+0102,CMSC412,Neil Spring,3,0,25,TuTh,11:00am - 12:15pm,1122,CSI
+0101,CMSC414,A.U. Shankar ,6,0,40,TuTh,12:30pm - 1:45pm,1122,CSI
+0201,CMSC414,Elaine Shi,0,1,50,MW,3:30pm - 4:45pm,1122,CSI
+0101,CMSC417,Ashok Agrawala ,0,5,40,TuTh,11:00am - 12:15pm,3120,CSI
+0201,CMSC417,Instructor: TBA,0,27,40,TuTh,3:30pm - 4:45pm,2107,CSI
+0101,CMSC420,Hanan Samet ,0,0,40,TuTh,12:30pm - 1:45pm,2120,CSI
+0201,CMSC420,Michelle Hugue ,10,0,40,MW,3:30pm - 4:45pm,3120,CSI
+0101,CMSC421,Donald Perlis ,2,0,50,TuTh,2:00pm - 3:15pm,1121,CSI
+0201,CMSC421,Donald Perlis ,3,0,46,TuTh,9:30am - 10:45am,3117,CSI
+0101,CMSC423,Hector Corrada Bravo,0,20,48,MW,3:30pm - 4:45pm,1121,CSI
+0101,CMSC424,Nicholas Roussopoulos ,2,0,40,TuTh,2:00pm - 3:15pm,3120,CSI
+0101,CMSC426,John Aloimonos,0,7,40,TuTh,11:00am - 12:15pm,2120,CSI
+0101,CMSC427,Zia Khan,0,2,40,MW,2:00pm - 3:15pm,1121,CSI
+0101,CMSC430,Jeffrey Foster ,0,1,40,MW,3:30pm - 4:45pm,2107,CSI
+0101,CMSC433,Michael Hicks ,15,0,50,TuTh,3:30pm - 4:45pm,1121,CSI
+0101,CMSC434,Jon Froehlich,8,0,44,TuTh,9:30am - 10:45am,1122,CSI
+0201,CMSC434,Vibha Sazawal,6,0,44,TuTh,11:00am - 12:15pm,1121,CSI
+0101,CMSC435,James Purtilo ,4,0,50,TuTh,12:30pm - 1:45pm,1121,CSI
+0101,CMSC436,Adam Porter ,14,0,50,TuTh,9:30am - 10:45am,1121,CSI
+0201,CMSC436,Atif Memon ,11,0,60,TuTh,12:30pm - 1:45pm,2117,CSI
+0101,CMSC451,Aravind Srinivasan,1,0,40,TuTh,12:30pm - 1:45pm,3120,CSI
+0101,CMSC452,William Gasarch ,0,11,32,TuTh,2:00pm - 3:15pm,3118,CSI
+0101,CMSC456,Jonathan Katz,3,0,40,MWF,12:00pm - 12:50pm,1121,CSI
+0101,CMSC460,Harland Glaz ,2,0,33,TuTh,12:30pm - 1:45pm,0304,MTH
+0201,CMSC460,Changhui Tan,0,2,25,TuTh,2:00pm - 3:15pm,0409,MTH
+0101,CMSC466,Maria Cameron,0,11,25,MWF,11:00am - 11:50am,1311,MTH
+0101,CMSC474,Dana Nau ,0,9,40,TuTh,3:30pm - 4:45pm,2120,CSI
+0101,CMSC498,Uzi Vishkin ,0,7,10,MW,11:00am - 12:15pm,1100,ITV
+0101,CMSC498,Amol Deshpande,0,8,40,TuTh,11:00am - 12:15pm,2107,CSI
+0101,CMSC498,Marshini Chetty ,4,0,10,Th,6:00pm - 8:45pm,0123,HBK
+0101,CMSC631,David Van Horn,0,3,20,TuTh,3:30pm - 4:45pm,3118,CSI
+0101,CMSC660,Ramani Duraiswami,3,0,25,TuTh,3:30pm - 4:45pm,3120,CSI
+0101,CMSC663,Howard Elman,0,15,20,TuTh,5:00pm - 6:15pm,4122,CSI
+0101,CMSC666,Tobias von Petersdorff ,0,8,25,TuTh,2:00pm - 3:15pm,4122,CSI
+0101,CMSC701,Mihai Pop,0,9,40,TuTh,9:30am - 10:45am,3120,CSI
+0101,CMSC712,A.U. Shankar ,0,0,20,TuTh,2:00pm - 3:30pm,3258,AVW
+0101,CMSC723,Hal Daume,10,0,40,TuTh,2:00pm - 3:15pm,2120,CSI
+0101,CMSC733,David Jacobs ,17,0,32,TuTh,11:00am - 12:15pm,3118,CSI
+0101,CMSC737,Atif Memon ,0,0,20,TuTh,9:30am - 10:45am,2118,CSI
+0101,CMSC754,David Mount ,15,0,32,TuTh,12:30pm - 1:45pm,2118,CSI
+0101,CMSC798,Jeffrey Foster ,0,10,40,F,11:00am - 12:50pm,2117,CSI
+0101,CMSC818,Peter Keleher ,0,1,20,TuTh,11:00am - 12:15pm,3258,AVW
+0101,CMSC818,Instructor: TBA,0,145,145,MW,4:00pm - 5:00pm,1115,CSI
+0101,CMSC818,Tudor Dumitras,0,13,15,MW,12:30pm - 1:45pm,1202,JMP
+0101,CMSC828,Larry Davis ,0,2,25,TuTh,2:00pm - 3:15pm,2118,CSI
+0101,CMSC828,Venkatramanan Subrahmanian ,0,12,25,TuTh,9:30am - 10:45am,3118,CSI
+0101,CMSC858,Mohammad Hajiaghayi,0,3,20,TuTh,3:30pm - 4:45pm,2118,CSI
