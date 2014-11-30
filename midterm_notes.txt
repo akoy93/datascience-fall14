@@ -1,0 +1,374 @@
+Lecture 1 =========================================================
+
+Four V's of Big Data
+- Volume, Variety (structured data, spreadsheets, photos, etc), Velocity (data streams, real-time analytics), Veracity (how to decide what to trust? how to remove noise?)
+
+Recent Changes
+- Much more data than before, but not much different from what statisticians have been doing for years
+- Inexpensive computing + cloud + easy-to-use programming frameworks
+
+Key Shifts in Big Data
+- Going from curated, clean, small samples to large, uncurated, messy datasets
+- More about correlation instead of causation
+- Datification
+
+In short, data science has turned into a practice that tries to make sense of extremely large volumes of messy data, looking for correlation instead of causation. Most time is spent cleaning and wrangling data.
+
+Lecture 2 =========================================================
+
+Basic Probability
+- Trial, Sample Space, Event
+- Independence
+- Bayes Theorem -> P(A | B) = P(B | A) * P(A) / P(B)
+- Conditional Independence -> P(A AND B | C) = P(A | C) * P(B | C)
+- Entropy: measure of uncertainty in a probability distribution
+
+Terms
+- Types of data:
+  -> quantitative: discrete vs. continuous
+  -> categorical
+- Random Error vs. Systematic Error
+- Population vs. Sample
+  -> Population: any set of objects or units under consideration
+  -> Sample: a subset of the data
+
+Sources of Bias
+- Sample Bias
+  -> Selection bias, volunteer bias, nonresponse bias
+- Information Bias
+  -> interviewer bias, social desirability bias
+- Confirmation Bias
+- Anchor Bias
+- *The gold standard is a randomized clinical trial
+
+Basic Statistics
+- Mean, Median, Mode, Variance, Standard Deviation
+  -> Median considered the most representative
+- Normal distribution
+
+Confidence Intervals
+- Higher confidence level -> bigger interval
+- Higher variability -> bigger interval
+- Higher number of samples -> smaller interval
+
+Hypothesis Testing
+- H_0 is the null hypothesis, H_1 is the alternative hypothesis
+  -> must be mutually exclusive
+  -> goal is to reject H_0
+- Statistical significance: probability that the result is not due to chance
+- Process:
+  -> Decide on H_0 and H_1
+  -> Determine test statistic
+  -> Select significance level (5% or 1%)
+  -> Compute the observed value of the test statistic
+  -> Compute p-value: the probability that the test statistic took the value by chance (i.e. the probability of getting an observation at least as extreme)
+  -> Reject the null hypothesis if p-value < significance level
+
+Lecture 3 =========================================================
+
+Machine Learning Terms
+- Training vs. Testing datasets
+- Supervised Learning (e.g. classification, regression, decision trees)
+  -> Learn which inputs lead to which outputs
+- Unsupervised Learning (e.g. clustering, association rule mining, dimensionality reduction)
+  -> deduce structure in provided unlabled data
+- Feature Selection
+  -> Selecting a subset of all possible features to use
+- Regularization
+  -> Simplifying solutions produced by a techinique by penalizing complexity
+- Overfitting:
+  -> Learned model starts capturing random error or noise instead of underlying relationship
+
+Linear Regression
+- Find a line of best fit
+  -> Goal: minimize residual sum of squares (distance of points from line)
+- Transformations, we may also transform the independent variables (no need to be strictly linear)
+- Assumes all predictor variables are independent
+
+Classification
+- Goal is to classify a sample based on a set of features (independent variables)
+  -> Learn a model for future classifications
+- Decision Trees
+- Support Vector Machines
+  -> If classes aren't linearly separable, find best division
+  -> Kernel trick: a transformation that allows us to search for separating hyperplanes rather than ellipses for instance
+- Cluster Analysis (K-means)
+  -> pick k centroids randomly
+  -> assign each of the data points to the closest centroid
+  -> recompute centroid as the centroid of the data points assigned to it
+  -> repeat until convergence
+- Hierarchical Clustering
+  -> build nested clusters by merging (bottom-up) or splitting (top-down)
+
+Lecture 4 =========================================================
+
+Data Modeling
+- Data Model: A collection of concepts that describes how data is represented and accessed
+- Schema: A description of a specific collection of data, using a given data model
+- General requirements:
+  -> Efficiency
+  -> Expressiveness (can capture real-world data well)
+  -> Ease of use
+  -> Integrity constaints
+  -> Maniuplation languages: constructs for manipulating the data
+- Tradeoffs between descriptive power and ease of use/efficiency
+- Data independence: idea that you can change the representation of data without changing programs that operate on it
+- Physical data independence: I can change the layout of data on disk and my programs won't change
+
+Example Data Models
+- Relational, Entity-Relationship model, XML
+- Object-oriented, Object-relational, RDF
+- Current favorites: JSON, Protocol Buffers, Avro, Thrift, Property Graph
+
+Types of Modeling
+- Physical, Logical or Conceptual
+
+Modern Data Models
+- XML
+  -> intended for semi-structured data
+  -> flexible schema
+- RDF: Resource Description Framework
+  -> Key construct: subject-predicate-object "triple" (r.h. subject=sky, predicate=has-the-color, object=blue)
+  -> Direct mapping to a labeled, directed multi-graph
+- JSON
+- Property Graph Model
+  -> an edge-labeled and vertex-labeled graph, with properties associated with each edge and vertex
+
+Serialization Formats
+- Motivation: a way for programs/systems to send data to each other
+- Protocol buffers
+  -> relational schema with support for optional fields and other constructs
+  -> schema speciified by a .proto file
+  -> Compiled to produce C++, Java, or Python code
+- Avro (richer data structures, JSON-specified schema)
+- Thrift
+
+Lecture 5 =========================================================
+
+Relational Model + SQL
+- Separation of logical, physical data models (data independence)
+- Declarative query languages
+- Formal semantics
+- Query optimization (key to commercial success)
+
+Terms
+- Superkey: K is a superkey of R if values for K are sufficient to identify a unique tuple of each possible relation r(R)
+  -> e.g. {ID} and {ID,name}
+- Candidate key: a super key is a candidate key if K is minimal
+  -> e.g. {ID}
+- Foreign key: primary key of a relation that appears in another relation
+- Foreign key constraint: that the tuple corresponding to that primary key must exist
+  -> called referential integrity constraint
+
+SQL Basics
+- CREATE TABLE <name> ( <field> <domain>, ... )
+- INSERT INTO <name> (<field names>) VALUES (<field values>)
+- DELETE FROM <name> WHERE <condition>
+- UPDATE <name> SET <field name> = <value> WHERE <condition>
+- SELECT <fields> FROM <name> WHERE <condition>
+
+SQL Views
+- Used in place of a table name
+- Simplifies queries, hides data
+
+Transactions
+- A sequence of queries and update statements executed as a single unit
+
+Triggers
+- A statement that is executed automatically by the system as a side effect of a modification to the database
+
+Integrity Constraints
+- Predicates on the database that must always hold
+- Key constraints: specifying something is a primary key or unique (e.g. PRIMARY KEY)
+- Attribute constraints: constraints on the values of the attributes (e.g. not null, check (balance >= 0))
+- Referential integrity: prevent dangling tuples (e.g. CREATE TABLE loan(..., FOREIGN KEY bname REFERENCES branch))
+
+Global Constraints
+- Single table ..., CHECK (NOT(bcity = 'bkln') OR assets > 5M))
+- Multi-table:
+  CHECK (NOT EXISTS (
+           SELECT   * 
+           FROM loan AS L
+           WHERE  NOT EXISTS(
+                    SELECT   *
+                    FROM borrower B, depositor D, account A
+                    WHERE B.cname = D.cname  AND
+                             D.acct_no = A.acct_no  AND
+                             L.lno  = B.lno)))
+
+Lecture 6 =========================================================
+
+Wrangling
+- Getting the data into a structured for suitable for analysis
+- Steps:
+  -> scraping: extracting info
+  -> transformation: getting into right structure
+  -> integration: combining multiple sources
+  -> information extraction: extracting structured information
+  -> cleaning: removing inconsistencies and errors
+
+Single Source Problems
+- Data can be messy
+  -> ill-formatted data
+  -> missing or illegal values, misspellings, use of wrong fields, extraction issues
+  -> duplicated records, contradicting information, referential integrity violations
+  -> unclear default values
+  -> evolving schemas or classification schemes
+  -> outliers
+
+Multi-source Problems
+- mapping information across sources
+  -> naming conflicts, structural conflicts
+- entity resolution: matching entities across sources
+- contradicting information, mismatched information, etc
+
+Data Cleaning: Outlier Detection
+- Outliers may be indicative of:
+  -> data entry errors, measurement errors, distillation errors (errors that pop up during processing and summarization), data integeration errors
+- Univariate Outliers
+  -> Use center (e.g. mean), dispersion (e.g. standard deviation), and skew to identify outliers
+    ~ watch out for masking
+    ~ use robust statistics such as median, k% trimmed mean, median absolute deviation instead of standard deviation
+  -> if data is not normally distributed:
+    ~ distance based methods: look for points without many neighbors
+    ~ density based methods: e.g. density is average distance to k nearest neighbors
+  -> most of these techniques break down as dimensionality of the data increases (curse of dimensionality)
+- Multivariate outliers
+  -> Mahalanobis Depth of a Point (essentially multidimensional standard deviation)
+  -> mean/covariance are not robust, with this, an approach is to remove points with high Mahalnobis distance and recompute
+- Timeseries outliers
+- Frequency-based outliers
+
+Data Cleaning: Entity Resolution
+- Goal: Identify different manifestations of the same real world object
+  -> Motivating examples: postal addresses
+
+Entity Resolution: Three Slightly Different Problems
+- Deduplication: clustering the records/mentions that belong to the same entity
+- Record Linkage: Match records across two different databases (e.g. social networks)
+- Reference Matching: match "references" to clean records in a reference table (e.g. matching newspaper artical mentions to names of people)  
+
+Entity Resolution: Data Matching
+- Goal is finding similarities between two references
+- Edit Distance Functions: Levenshtein distance (not cheap to compute)
+- Set Similarity: Jaccard distance = |A AND B| / |A U B|
+- Vector Similarity: Cosine similarity
+- Q-grams: find all length-q substrings in each string, use set/vector similarity on the resulting set
+- Soundex: phonetic similarity metric, homophones should be encoded to the same representation so spelling errors can be handled
+- Translation tables to handle abbreviations, nicknames, other synonyms
+
+Entity Resolution: Algorithms
+- Simple Threshhold: if distance below some number, consider references equal
+- Techniques
+  -> more weight to matches involving rarer words
+  -> constraints
+    ~ transitivity: e.g. m1 and m2 match, m2 and m3 match, so m1 and m3 must match
+    ~ exclusivity: m1 and m2 match -> m3 cannot match with m2
+- Clustering based (e.g. Agglomerative Clustering)
+- Collective Entity Resolution
+- Crowdsourcing (e.g. Mechanical Turk)
+
+Entity Resolution: Scaling to Big Data
+- Problems: n^2 possible matches, so must reduce the search space
+- Use some easy-to-evaluate criterion to restrict the pairs considered further
+- Useful technique: min-hash signatures
+  -> can quickly find potentially overlapping sets
+  -> method of quickly estimating Jaccard similarities
+  -> P[hmin(A) = hmin(B)] = J(A,B)
+
+Data Integration
+- Each data source has a local schema
+- Unified schema is called mediated schema or global schema
+- Two appraches:
+  -> Data Warehousing: extract and load all data from the sources, process it, and put it all in a single database
+    ~ easy problem: one-way mappings
+  -> Keep the data in the sources, but figure out the mappings between them and the mediated schema, and retrieve data from the sources as needed
+    ~ not as efficient as data warehousing
+    ~ better for dynamic data than data warehousing 
+    ~ more difficult: two-way mappings
+- Key Challenges
+  -> Data extraction, reconciliation, and cleaning
+  -> Schema alignment and mapping
+    ~ decide on best mediated schema
+  -> Answer queries over the global schema (mapping queries on global schema to queries in local schemas)
+  -> Limitations in mechanisms for accessing sources
+
+Data Integration: Schema Matching or Alignment
+- Goal: Identify corresponding elements in two schemas
+- Techniques:
+  -> use names of the attributes, any textual description, and metadata
+  -> use structure in the schemas
+  -> overall, very domain-specific
+
+Data Integration: Schema Mapping
+- Global-as-View Approach: For each local schema, specify a transformation to the global schema
+- Local-as-View Approach: For each local schema, specify a view on the global schema that it is equal to
+  -> think of views in SQL (kind of like pointers to the data)
+
+Information Extraction
+- Goal: automatically extract structured information from unstructured text to create a structured database or a knowledge base
+- Applications like Gmail calendar additions from emails
+- Named Entity Recognition:
+  -> identify and classify names in the text
+    ~ sentence segmentation -> tokenization -> part of speech tagging -> entity detection
+- Relation Extraction: 
+  -> extracting, typically binary, relationships between entities (e.g. the washington nationals are a baseball team based in dc)
+- Two approaches
+  -> Rule based (handwritten rules)
+    ~ high precision (mostly correct), low recall (misses to many)
+  -> Machine learning-based
+
+Lecture 7 =========================================================
+
+Client-Server Acrhitecture of a typical database system
+- clients do not share any of their resources, but request a server's content or service function
+
+Key components of a database system
+- Query Processing Engine
+  -> given an input query, decide how to execute it
+- Buffer Manager
+  -> bringing pages from disk to memory
+  -> managing the limited memory
+- Storage Management on Persistent Storage
+  -> Storage hierarchy
+
+Following a SQL query through the system
+  - Parsing + Authentication
+    -> resolve references, syntax errors, etc. makes sure it is a valid query
+  - Rewrite
+    -> converts the query into an internal format, relational algebra like
+  - Query optimization
+    -> finds the best way the evaluate the query, which index to use? what join method to use?
+  - Query execution
+    -> reads the data from the files, do the query processing, joins, selections, aggregates
+
+Join operations
+- nested-loops join
+- sort-join
+- hash-join
+
+Disk Storage
+- Cost differential between random I/Os and sequential I/O
+- B+ tree indexes
+- Primary vs Secondary Indexes
+  -> Primary: the relation is sorted on the search key of the index (e.g. employee id)
+  -> Secondary: an index that is not a primary index and may have duplicates (e.g. employee name)
+
+Transactions
+- ACID Properties
+  -> Atomicity: Entire transaction happens or not
+  -> Consistency: Transactions, executed completely, take database from one valid state to another (always get the same sequential order, no data races)
+  -> Isolation: Concurrent transactions appear to run in isolation (concurrency control using locks for instance)
+  -> Durability: Transaction is persistent
+- Brief overview of how these are guaranteed
+  -> Atomicity: Roll back unless transaction is committed in the log
+  -> Consistency: rules
+  -> Isolation: Concurrency control (e.g. snapshot isolation)
+  -> Durability: Use a transaction log that can be reprocessed to recreate the system state right before failure
+
+Snapshot Isolation
+- Multiversion concurrency control
+- Keep versions of data items since the oldest query
+
+
+Study labs (SQL mostly)

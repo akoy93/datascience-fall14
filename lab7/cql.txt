@@ -1,0 +1,43 @@
+CREATE KEYSPACE lab7
+WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1};
+
+USE lab7;
+
+CREATE TABLE data (
+  type text,
+  owner_id int,
+  ad_id int,
+  num_clicks int,
+  num_impressions int,
+  PRIMARY KEY ((owner_id,ad_id),type)
+);
+
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',1,1,1,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',1,2,0,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',1,3,1,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',1,4,0,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',2,1,0,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',2,2,0,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',2,3,0,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',2,4,0,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',3,1,1,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',3,2,0,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',3,3,2,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('clicks',3,4,1,0);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',1,1,0,10);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',1,2,0,5);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',1,3,0,20);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',1,4,0,15);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',2,1,0,10);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',2,2,0,55);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',2,3,0,13);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',2,4,0,21);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',3,1,0,32);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',3,2,0,23);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',3,3,0,44);
+INSERT INTO data (type, owner_id, ad_id, num_clicks, num_impressions) VALUES ('impressions',3,4,0,36);
+
+SELECT * FROM data WHERE owner_id=1 AND ad_id=3;
+
+CREATE INDEX ON data (owner_id);
+SELECT * FROM data WHERE owner_id=2;
