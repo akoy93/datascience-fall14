@@ -34,8 +34,11 @@ import backtype.storm.tuple.Values;
 import org.umd.assignment.spout.RandomSentenceSpout;
 import org.umd.assignment.spout.TwitterSampleSpout;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 /**
  * This topology demonstrates Storm's stream groupings and multilang capabilities.
@@ -60,6 +63,38 @@ public class WordCountTopology {
 
   public static class WordCount extends BaseBasicBolt {
     Map<String, Integer> counts = new HashMap<String, Integer>();
+	HashSet<String> stopWords = new HashSet<String>();	
+
+	public WordCount() {
+		stopWords.add("a");
+		stopWords.add("about");
+		stopWords.add("above");
+		stopWords.add("across");
+		stopWords.add("after");
+		stopWords.add("again");
+		stopWords.add("against");
+		stopWords.add("all");
+		stopWords.add("almost");
+		stopWords.add("alone");
+		stopWords.add("along");
+		stopWords.add("already");
+		stopWords.add("also");
+		stopWords.add("although");
+		stopWords.add("always");
+		stopWords.add("among");
+		stopWords.add("an");
+		stopWords.add("and");
+		stopWords.add("another");
+		stopWords.add("any");
+		stopWords.add("anybody");
+		stopWords.add("anyone");
+		stopWords.add("anything");
+		stopWords.add("anywhere");
+		stopWords.add("are");
+		stopWords.add("area");
+		stopWords.add("areas");
+		stopWords.add("around");
+	}
 
     @Override
     public void execute(Tuple tuple, BasicOutputCollector collector) {
@@ -75,14 +110,14 @@ public class WordCountTopology {
 
 
 		String word = tuple.getString(0);
-		Integer count = counts.get(word);
-		if (count == null)
-			count = 0;
-		count++;
-		counts.put(word, count);
-		collector.emit(new Values(word, count));
-
-
+		if (!stopWords.contains(word.toLowerCase())) {
+			Integer count = counts.get(word);
+			if (count == null)
+				count = 0;
+			count++;
+			counts.put(word, count);
+			collector.emit(new Values(word, count));	
+		}
     }
 
 	@Override
@@ -102,6 +137,26 @@ public class WordCountTopology {
 		//  For a simple example see inside the runStorm.sh.
 		//
 		//--------------------------------------------------------------------------
+
+		System.out.println("Top 10 ------------------------------------");
+
+		PriorityQueue<String> q = new PriorityQueue<String>(11, new Comparator<String>() {
+
+			@Override
+			public int compare(String a, String b) {
+				return counts.get(b) - counts.get(a);
+			}
+
+		});
+
+		for (String word : counts.keySet()) {
+			q.add(word);
+		}
+
+		for (int i = 0; i < 10; i++) {
+			String word = q.poll();
+			System.out.println(word + " " + counts.get(word));
+		}
 	}
 
     @Override
@@ -124,7 +179,8 @@ public class WordCountTopology {
 	//--------------------------------------------------------------------------
 
 	// Setting up a spout
-    builder.setSpout("spout", new RandomSentenceSpout(), 3); //builder.setSpout("spout", new TwitterSampleSpout(), 3);
+    // builder.setSpout("spout", new RandomSentenceSpout(), 3); //builder.setSpout("spout", new TwitterSampleSpout(), 3);
+	builder.setSpout("spout", new TwitterSampleSpout(), 3);
 
 	// Setting up bolts
     builder.setBolt("split", new SplitSentence(), 3).shuffleGrouping("spout");
@@ -153,7 +209,7 @@ public class WordCountTopology {
 	  //
 	  // ----------------------------------------------------------------------
 
-      Thread.sleep(10000);
+      Thread.sleep(600000);
 
       cluster.shutdown(); // blot "cleanup" function is called when cluster is shutdown (only works in local mode)
     }
