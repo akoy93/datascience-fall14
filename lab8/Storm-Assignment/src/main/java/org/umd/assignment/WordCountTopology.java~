@@ -209,7 +209,7 @@ public class WordCountTopology {
 	  //
 	  // ----------------------------------------------------------------------
 
-      Thread.sleep(30000);
+      Thread.sleep(600000);
 
       cluster.shutdown(); // blot "cleanup" function is called when cluster is shutdown (only works in local mode)
     }

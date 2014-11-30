@@ -180,23 +180,23 @@ public class WordCountTopology {
 
 	// Setting up a spout
     // builder.setSpout("spout", new RandomSentenceSpout(), 3); //builder.setSpout("spout", new TwitterSampleSpout(), 3);
-	builder.setSpout("spout", new TwitterSampleSpout(), 3);
+	builder.setSpout("spout", new TwitterSampleSpout(), 10);
 
 	// Setting up bolts
-    builder.setBolt("split", new SplitSentence(), 3).shuffleGrouping("spout");
-    builder.setBolt("count", new WordCount(), 3).fieldsGrouping("split", new Fields("word"));
+    builder.setBolt("split", new SplitSentence(), 10).shuffleGrouping("spout");
+    builder.setBolt("count", new WordCount(), 10).fieldsGrouping("split", new Fields("word"));
 
     Config conf = new Config();
     conf.setDebug(true);
 
 
     if (args != null && args.length > 0) {
-      conf.setNumWorkers(3);
+      conf.setNumWorkers(10);
 
       StormSubmitter.submitTopologyWithProgressBar(args[0], conf, builder.createTopology());
     }
     else {
-      conf.setMaxTaskParallelism(3);
+      conf.setMaxTaskParallelism(10);
 
       LocalCluster cluster = new LocalCluster();
       cluster.submitTopology("word-count", conf, builder.createTopology());
