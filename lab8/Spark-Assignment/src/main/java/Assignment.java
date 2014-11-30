@@ -19,6 +19,7 @@ import com.google.common.collect.Lists;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.function.FlatMapFunction;
+import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.api.java.StorageLevels;
@@ -57,11 +58,26 @@ public final class Assignment {
                 new PairFunction<String, String, Integer>() {
                 @Override
                 public Tuple2<String, Integer> call(String s) {
-                return new Tuple2<String, Integer>(s, 1);
+                return new Tuple2<String, Integer>(s.toLowerCase(), 1);
                 }
                 });
 
-        wordCounts.print();
+        Function2<Integer, Integer, Integer> reduceFunc = new Function2<Integer, Integer, Integer>() {
+            @Override
+            public Integer call(Integer i1, Integer i2) throws Exception {
+                return i1 + i2;
+            }
+        };
+
+        JavaPairDStream<String, Integer> windowedWordCounts = 
+            wordCounts.reduceByKeyAndWindow(reduceFunc, new Duration(30000), new Duration(10000)).
+            filter(new Function<Tuple2<String, Integer>, Boolean>() {
+                public Boolean call(Tuple2<String, Integer> wordCount) {
+                    return wordCount._1.equals("#obama");
+                }
+            });
+
+        windowedWordCounts.print();
 
         ssc.start();
 
